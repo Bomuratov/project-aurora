@@ -1,0 +1,28 @@
+# VENVS
+/env
+env
+env/
+/env/
+/venv
+venv
+venv/
+/venv/
+
+# CACHES
+__pycache__
+__pycache__/
+/__pycache__/
+/__pycache__
+
+# DSTORE
+.DS_Store
+/DS_Store
+/DS_Store/
+DS_Store/
+DS_Store
+
+# DATABASE
+db.sqlite3
+
+# env
+.env
