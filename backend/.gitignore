@@ -26,3 +26,13 @@ db.sqlite3
 
 # env
 .env
+
+# media and static files
+/media
+media/
+media
+/media/
+/static
+static/
+static
+/static/
