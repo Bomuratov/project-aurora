@@ -3,7 +3,7 @@ certifi==2024.12.14
 charset-normalizer==3.4.0
 coreapi==2.3.3
 coreschema==0.0.4
-Django==5.1.4
+Django==4.2.17
 django-cors-headers==4.6.0
 django-filter==24.3
 django-rest-swagger==2.2.0
@@ -17,10 +17,13 @@ MarkupSafe==3.0.2
 openapi-codec==1.3.2
 packaging==24.2
 pillow==11.0.0
+psycopg==3.2.3
+psycopg2-binary==2.9.9
 PyJWT==2.10.1
 qrcode==8.0
 requests==2.32.3
 simplejson==3.19.3
 sqlparse==0.5.3
+typing_extensions==4.12.2
 uritemplate==4.1.1
 urllib3==2.3.0
