@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-z%ef86^fv))1f1p%=mw3q((_m-fj=3#3j*l*6w(y(u^8df3%$d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     "auth.apps.AuthConfig",
     "core",
     "product",
-    "vendor"
+    "vendor",
+    "orders"
 ]
 
 MIDDLEWARE = [
@@ -98,11 +99,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', ""),
-        'USER': os.environ.get('POSTGRES_USER', ""),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ""),
-        'HOST': os.environ.get('POSTGRES_HOST', ""),
-        'PORT': os.environ.get('POSTGRES_PORT', ""),
+        'NAME': os.environ.get('POSTGRES_DB', "aurora"),
+        'USER': os.environ.get('POSTGRES_USER', "postgres"),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', "admin"),
+        'HOST': os.environ.get('POSTGRES_HOST', "localhost"),
+        'PORT': os.environ.get('POSTGRES_PORT', "5433"),
     }
 }
 
@@ -141,9 +142,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
+# STATICFILES_DIRS = ((os.path.join(BASE_DIR, "static")),)
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Authentication CONSTANTAS
+
+MAX_CODE_TRY = 6
+
+PASSWORD_MIN_LENGHT = 8
+
+AUTH_USER_MODEL = "users.UserModel"
