@@ -1,0 +1,171 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дизайн интерфейса</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: white;
+        }
+
+        .header .address {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .header .address span {
+            display: block;
+            font-weight: bold;
+            color: black;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .search-bar input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+
+        .banner {
+            margin: 10px;
+        }
+
+        .banner img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 10px;
+            background-color: white;
+        }
+
+        .categories div {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .categories img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 5px;
+        }
+
+        .section {
+            padding: 10px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 10px;
+        }
+
+        .card {
+            flex: 1;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card span {
+            display: block;
+            font-size: 14px;
+            margin-top: 5px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="address">
+            <span>улица Бахауддина Накшбанда, 158</span>
+            Как можно скорее
+        </div>
+        <div class="icon">🔍</div>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Поиск">
+    </div>
+
+    <div class="banner">
+        <img src="banner1.jpg" alt="Месяц уюта">
+        <img src="banner2.jpg" alt="Кредит для бизнеса" style="margin-top: 10px;">
+    </div>
+
+    <div class="categories">
+        <div>
+            <img src="burger-icon.png" alt="Бургеры">
+            Бургеры
+        </div>
+        <div>
+            <img src="pizza-icon.png" alt="Пицца">
+            Пицца
+        </div>
+        <div>
+            <img src="lavash-icon.png" alt="Лаваш">
+            Лаваш
+        </div>
+        <div>
+            <img src="sushi-icon.png" alt="Суши">
+            Суши
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Популярные рестораны</h2>
+        <div class="cards">
+            <div class="card">
+                Les Ailes
+                <span>20-30 мин</span>
+            </div>
+            <div class="card">
+                Yapona Mama
+                <span>30-40 мин</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Магазины</h2>
+        <div class="cards">
+            <div class="card">
+                Safa
+                <span>20-40 мин</span>
+            </div>
+            <div class="card">
+                Delighte
+                <span>20-40 мин</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
