@@ -3,7 +3,7 @@ from core import utils, get_basemodel
 
 BaseModel = get_basemodel()
 
-class Vendor(BaseModel):
+class Restaurant(BaseModel):
     user = models.ForeignKey("users.UserModel", on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=225)
     adress = models.CharField(max_length=225)

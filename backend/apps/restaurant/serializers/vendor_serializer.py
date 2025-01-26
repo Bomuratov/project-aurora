@@ -1,8 +1,8 @@
 from rest_framework.serializers import ModelSerializer
-from vendor.models import Vendor
+from restaurant.models import Restaurant
 
 
 class VendoerSerializer(ModelSerializer):
     class Meta:
-        model = Vendor
+        model = Restaurant
         fields = "__all__"

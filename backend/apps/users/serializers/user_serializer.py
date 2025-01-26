@@ -3,7 +3,7 @@ from datetime import timedelta
 from django.utils import timezone
 from rest_framework import serializers
 from django.conf import settings
-from auth.models import UserModel
+from apps.users.models import UserModel
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
         error_messages={
             "min_length": f"Парол должен быть больше {settings.PASSWORD_MIN_LENGHT} символов"
         }
-    ),
+    )
     password_2 = serializers.CharField(
         write_only=True,
         min_length=settings.PASSWORD_MIN_LENGHT,
@@ -39,7 +39,8 @@ class UserSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         code = random.randint(100000, 999999)
-        code_expiry = timezone.now() + timedelta(minutes=120) # срок дейтвия кода 2ч или 120 минут
+        print(code)
+        code_expiry = timezone.now() + timedelta(minutes=30) # срок дейтвия кода 30 минут или 30 минут
         user = UserModel.objects.create(
             username=validated_data["username"],
             email=validated_data["email"],

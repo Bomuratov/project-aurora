@@ -48,10 +48,11 @@ INSTALLED_APPS = [
 
     # internal apps
     "apps",
-    "auth.apps.AuthConfig",
+    "users.apps.UsersConfig",
+    "vendors.apps.VendorsConfig",
     "core",
     "product",
-    "vendor",
+    "restaurant",
     "orders"
 ]
 
@@ -100,10 +101,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('POSTGRES_DB', "aurora"),
-        'USER': os.environ.get('POSTGRES_USER', "postgres"),
+        'USER': os.environ.get('POSTGRES_USER', "aurora"),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', "admin"),
         'HOST': os.environ.get('POSTGRES_HOST', "localhost"),
-        'PORT': os.environ.get('POSTGRES_PORT', "5433"),
+        'PORT': os.environ.get('POSTGRES_PORT', "5432"),
     }
 }
 
@@ -132,11 +133,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -161,4 +162,4 @@ MAX_CODE_TRY = 6
 
 PASSWORD_MIN_LENGHT = 8
 
-AUTH_USER_MODEL = "users.UserModel"
+AUTH_USER_MODEL = "vendors.VendorModel"
