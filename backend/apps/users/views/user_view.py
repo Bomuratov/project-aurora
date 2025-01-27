@@ -3,7 +3,7 @@ import random
 from rest_framework import viewsets, decorators, response, status
 from django.conf import settings
 from django.utils import timezone
-from apps.users.models import UserModel
+from users.models import UserModel
 from users.serializers.user_serializer import UserSerializer
 
 

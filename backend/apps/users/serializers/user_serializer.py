@@ -3,7 +3,7 @@ from datetime import timedelta
 from django.utils import timezone
 from rest_framework import serializers
 from django.conf import settings
-from apps.users.models import UserModel
+from users.models import UserModel
 
 
 class UserSerializer(serializers.ModelSerializer):

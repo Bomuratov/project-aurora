@@ -24,6 +24,7 @@ class UserModel(models.Model):
     is_robot = models.BooleanField(default=False)
     user_registered_at = models.DateTimeField(auto_now_add=True, editable=False)
     chat_id = models.BigIntegerField(null=True, blank=True)
+    password = models.CharField(max_length=255)
 
     USERNAME_FIELD = "username"
 

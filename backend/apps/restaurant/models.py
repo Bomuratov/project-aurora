@@ -4,7 +4,7 @@ from core import utils, get_basemodel
 BaseModel = get_basemodel()
 
 class Restaurant(BaseModel):
-    user = models.ForeignKey("users.UserModel", on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey("vendors.VendorModel", on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=225)
     adress = models.CharField(max_length=225)
     telegram_link = models.CharField(max_length=225)
