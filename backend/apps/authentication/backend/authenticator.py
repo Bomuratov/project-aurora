@@ -7,6 +7,7 @@ class PhoneAuthBackend:
 
     def __init__(self):
         pass
+
     @staticmethod
     def authenticate(request, phone=None, password=None):
         try:
@@ -15,6 +16,7 @@ class PhoneAuthBackend:
                 return user
         except User.DoesNotExist:
             return None
+        
     @staticmethod
     def get_user(self, user_id):
         try:
@@ -36,6 +38,7 @@ class UsernameAuthBackend:
                 return user
         except User.DoesNotExist:
             return None
+        
     @staticmethod
     def get_user(self, user_id):
         try:
