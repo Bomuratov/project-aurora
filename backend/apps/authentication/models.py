@@ -27,16 +27,23 @@ class VendorManager(BaseUserManager):
 
 
 
-class VendorModel(AbstractBaseUser, PermissionsMixin):
+class UserModel(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, validators=[utils.USERNAME_VALIDATOR], unique=True)
-    phone_number = models.CharField(
+    phone = models.CharField(
         unique=True,
         max_length=14,
         validators=[utils.UZB_PHONE_VALIDATOR],
         null=True,
         blank=True,
     )
+    email = models.EmailField(blank=True, null=True)
+    code = models.CharField(max_length=6, null=True)
+    code_expiry = models.DateTimeField(blank=True, null=True)
+    max_code_try = models.CharField(max_length=2, default=settings.MAX_CODE_TRY, null=True)
+    code_max_out = models.DateTimeField(blank=True, null=True)
     is_active = models.BooleanField(default=False)
+    is_user = models.BooleanField(default=False)
+    is_vendor = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_manager = models.BooleanField(default=False)
     is_supervisor = models.BooleanField(default=False)

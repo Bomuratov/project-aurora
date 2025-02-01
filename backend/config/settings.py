@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 import sys
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -48,8 +49,7 @@ INSTALLED_APPS = [
 
     # internal apps
     "apps",
-    "users.apps.UsersConfig",
-    "vendors.apps.VendorsConfig",
+    "authentication.apps.AuthenticationConfig",
     "core",
     "product",
     "restaurant",
@@ -127,6 +127,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',  # Аутентификация для Админки
+#     'authentication.backend.authenticator.PhoneAuthBackend',   # Аутентификация для обичного Юзера
+#     'authentication.backend.authenticator.UsernameAuthBackend',  # Аутентификация для Вендора
+# ]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -162,4 +168,23 @@ MAX_CODE_TRY = 6
 
 PASSWORD_MIN_LENGHT = 8
 
-AUTH_USER_MODEL = "vendors.VendorModel"
+AUTH_USER_MODEL = "authentication.UserModel"
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+
+}
+
+
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+}

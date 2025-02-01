@@ -3,8 +3,8 @@ import random
 from rest_framework import viewsets, decorators, response, status
 from django.conf import settings
 from django.utils import timezone
-from users.models import UserModel
-from users.serializers.user_serializer import UserSerializer
+from authentication.models import UserModel
+from apps.authentication.serializers.user_register_serializer import UserSerializer
 
 
 class UserView(viewsets.ModelViewSet):
@@ -44,9 +44,11 @@ class UserView(viewsets.ModelViewSet):
             and instance.code_expiry > now
         ):
             instance.is_active = True
+            instance.is_user = True
             instance.code_expiry = None
             instance.max_code_try = settings.MAX_CODE_TRY
             instance.code_max_out = None
+            
             instance.save()
             return response.Response({
                 "message": "Пользователь успешно верифицирован", "error_code": 6}, status=status.HTTP_201_CREATED

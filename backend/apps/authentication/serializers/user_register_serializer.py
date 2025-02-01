@@ -3,7 +3,8 @@ from datetime import timedelta
 from django.utils import timezone
 from rest_framework import serializers
 from django.conf import settings
-from users.models import UserModel
+from authentication.models import UserModel
+from core.utils.password import hashing_password
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -47,7 +48,7 @@ class UserSerializer(serializers.ModelSerializer):
             phone=validated_data["phone"],
             code=code,
             code_expiry=code_expiry,
-            max_code_try=settings.MAX_CODE_TRY
+            max_code_try=settings.MAX_CODE_TRY,
         )
         user.set_password(validated_data["password_1"])
         user.is_active = False
