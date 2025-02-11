@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.core.validators import validate_email
 from django.conf import settings
 from core import utils
+from apps.authentication.utils.constantas import RESOURCE, PERMISSIONS, VIEW, MENU
 
 
 class VendorManager(BaseUserManager):
@@ -55,3 +56,15 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.username
+
+
+class Roles(models.Model):
+    action = models.CharField(max_length=100, choices=PERMISSIONS, default=VIEW)
+    resource = models.CharField(max_length=255, choices=RESOURCE, default=MENU)
+    perms = models.JSONField(null=True, blank=True, editable=False)
+
+    def save(self, *args, **kwargs):
+        if self.role and self.permission:
+            permissions = []
+            for per in self.permission:
+                ...

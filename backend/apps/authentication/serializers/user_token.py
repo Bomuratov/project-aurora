@@ -21,9 +21,6 @@ class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
             phone=attrs.get('username'),
             password=attrs.get('password')
         )
-        print(user)
-
-        # print(user_phone)
         
         if not user or user.is_vendor:
             raise serializers.ValidationError("Неправильный логин и пароль или пользователь не найден")
@@ -32,7 +29,7 @@ class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
         return {'access': str(refresh.access_token), 'refresh': str(refresh)}
     
 
-    """""
+"""""
     +998881836222
-     admin1234
-    """""
+    admin1234
+"""""

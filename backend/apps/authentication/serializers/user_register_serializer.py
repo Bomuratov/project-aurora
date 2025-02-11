@@ -1,10 +1,10 @@
 import random
 from datetime import timedelta
 from django.utils import timezone
-from rest_framework import serializers
+from rest_framework import serializers, response, status
 from django.conf import settings
 from authentication.models import UserModel
-from core.utils.password import hashing_password
+from authentication.utils.send_code import send_code
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -22,10 +22,15 @@ class UserSerializer(serializers.ModelSerializer):
             "min_length": f"Парол должен быть больше {settings.PASSWORD_MIN_LENGHT} символов"
         }
     )
+    bot_link = serializers.SerializerMethodField()
     class Meta:
         model=UserModel
-        fields = ["id", "username", "email", "phone", "password_1", "password_2", "user_registered_at"]
+        fields = ["id", "username", "email", "phone", "password_1", "password_2", "user_registered_at", "bot_link"]
         read_only_fields = ("id", "user_registered_at")
+
+    def get_bot_link(self, obj):
+        # Здесь можно хранить код в поле модели или получать из внешнего источника
+        return getattr(obj, "bot_link", None)
 
     def validate(self, attrs):
         if not attrs["password_1"]:
@@ -40,7 +45,6 @@ class UserSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         code = random.randint(100000, 999999)
-        print(code)
         code_expiry = timezone.now() + timedelta(minutes=30) # срок дейтвия кода 30 минут или 30 минут
         user = UserModel.objects.create(
             username=validated_data["username"],
@@ -53,6 +57,7 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data["password_1"])
         user.is_active = False
         user.is_staff = False
-        # send_code(phone=phone, code=code) via telegram
         user.save()
+        response_code = send_code(phone=validated_data["phone"], code=str(code))
+        user.bot_link = response_code.get("detail", None)
         return user
