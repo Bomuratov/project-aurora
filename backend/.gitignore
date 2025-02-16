@@ -21,6 +21,8 @@ __pycache__/
 DS_Store/
 DS_Store
 
+new_aurora.pem
+pr.py
 
 # DATABASE
 db.sqlite3

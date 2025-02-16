@@ -4,10 +4,7 @@ from apps.orders.views.cart_view import CartViewSet
 
 router = DefaultRouter()
 
-# Регистрируем OrderViewSet (если используется ModelViewSet)
-# router.register(r'orders', OrderViewSet, basename='order')
 
-# Маршруты для корзины (CartViewSet вручную, так как он ViewSet, а не ModelViewSet)
 cart_list = CartViewSet.as_view({
     'get': 'retrieve_cart',
     'post': 'add_to_cart',
@@ -16,5 +13,5 @@ cart_list = CartViewSet.as_view({
 
 urlpatterns = [
     path('cart/', cart_list, name='cart'),
-    # path('', include(router.urls)),  # Добавляем маршруты заказов
+
 ]

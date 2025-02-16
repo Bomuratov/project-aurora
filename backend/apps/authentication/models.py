@@ -68,3 +68,14 @@ class Roles(models.Model):
             permissions = []
             for per in self.permission:
                 ...
+
+
+
+# class UserLocation(models.Model):
+#     user_id = models.ForeignKey("authentication.Usermodel", on_delete=models.CASCADE, null=True, blank=True)
+#     long = models.CharField(max_length=255, null=True, blank=True)
+#     lat = models.CharField(max_length=255, null=True, blank=True)
+
+
+#     def __str__(self):
+#         return str(self.user_id)

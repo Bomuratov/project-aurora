@@ -14,6 +14,9 @@ from pathlib import Path
 import os
 import sys
 from datetime import timedelta
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,6 +32,31 @@ SECRET_KEY = 'django-insecure-z%ef86^fv))1f1p%=mw3q((_m-fj=3#3j*l*6w(y(u^8df3%$d
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+
+
+# cors settings
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+
+CORS_ALLOW_HEADERS = [
+    "access-control-allow-origin",
+    "authorization",
+    "content-type",
+]
+
 
 
 # Application definition
@@ -57,9 +85,12 @@ INSTALLED_APPS = [
     "orders"
 ]
 
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
