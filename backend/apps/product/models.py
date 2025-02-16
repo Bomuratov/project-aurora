@@ -33,7 +33,7 @@ class Menu(Basemodel):
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name="menu_category",
+        related_name="category",
     )
     restaurant = models.ForeignKey(
         "restaurant.Restaurant", on_delete=models.CASCADE, null=True, blank=True, related_name="restaurant_menu"
