@@ -39,3 +39,6 @@ media
 static/
 static
 /static/
+
+../.DS_Store
+../frontend/
