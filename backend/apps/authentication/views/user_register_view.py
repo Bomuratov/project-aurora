@@ -21,26 +21,27 @@ class UserView(viewsets.ModelViewSet):
 
         if not instance.code_expiry:
             return response.Response({
-            "message": "Похоже вы уже верифицированы", "error_code": 1
+            "message": "Похоже вы уже верифицированы", "code": 1
         }, status=status.HTTP_302_FOUND)
 
         if now >= instance.code_expiry:
-            return response.Response({"message": "Срок действия кода истёк", "error_code": 2}, status=status.HTTP_400_BAD_REQUEST)
+            return response.Response({"message": "Срок действия кода истёк", "code": 2}, status=status.HTTP_400_BAD_REQUEST)
         
         if not request.data.get("code"):
-            return response.Response({"message": "Введите проверочный код", "error_code": 3}, status=status.HTTP_404_NOT_FOUND)
+            return response.Response({"message": "Введите проверочный код", "code": 3}, status=status.HTTP_404_NOT_FOUND)
         
         code = request.data.get("code")
         print(f"request - {now} type - {type(now)}")
         print(f"database - {instance.code_expiry} type - {type(instance.code_expiry)}")
 
         if int(code) != int(instance.code):
-            return response.Response({"message": "Вы неправильно ввели проверочный код", "error_code": 4}, status=status.HTTP_404_NOT_FOUND)
+            return response.Response({"message": "Вы неправильно ввели проверочный код", "code": 4}, status=status.HTTP_404_NOT_FOUND)
         
+
         
         if (
             not instance.is_active
-            and int(instance.code) == code
+            and int(instance.code) == int(code)
             and instance.code_expiry > now
         ):
             instance.is_active = True
@@ -51,10 +52,11 @@ class UserView(viewsets.ModelViewSet):
             
             instance.save()
             return response.Response({
-                "message": "Пользователь успешно верифицирован", "error_code": 6}, status=status.HTTP_201_CREATED
+                "message": "Пользователь успешно верифицирован", "code": 6}, status=status.HTTP_201_CREATED
             )
+        
         return response.Response({
-            "message": "Непревиденна ошибка пользователь уже верифицирован или код верификации не требуется", "error_code": 5
+            "message": "Непревиденна ошибка пользователь уже верифицирован или код верификации не требуется", "code": 5
         }, status=status.HTTP_409_CONFLICT)
     
 
@@ -65,12 +67,12 @@ class UserView(viewsets.ModelViewSet):
 
         if instance.is_active:
             return response.Response({
-                "message": "Похоже вы уже верифицированы", "error_code": 10
+                "message": "Похоже вы уже верифицированы", "code": 10
             }, status=status.HTTP_400_BAD_REQUEST)
         
         if int(instance.max_code_try) == 0 and instance.code_max_out > now:
             return response.Response({
-                "message": "Вы много раз запросили код верификации попробуйте через 2 часа или 120 минут", "error_code": 11 
+                "message": "Вы много раз запросили код верификации попробуйте через 2 часа или 120 минут", "code": 11 
             }, status=status.HTTP_400_BAD_REQUEST)
         
         max_code_try = int(instance.max_code_try) - 1

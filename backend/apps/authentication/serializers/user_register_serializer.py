@@ -26,7 +26,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model=UserModel
         fields = ["id", "username", "email", "phone", "password_1", "password_2", "user_registered_at", "bot_link"]
-        read_only_fields = ("id", "user_registered_at")
+        read_only_fields = ("id", "user_registered_at", "code")
 
     def get_bot_link(self, obj):
         # Здесь можно хранить код в поле модели или получать из внешнего источника
@@ -57,7 +57,7 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data["password_1"])
         user.is_active = False
         user.is_staff = False
-        user.save()
         response_code = send_code(phone=validated_data["phone"], code=str(code))
+        user.save()
         user.bot_link = response_code.get("detail", None)
         return user
