@@ -16,7 +16,7 @@ import sys
 from datetime import timedelta
 from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,6 +32,7 @@ SECRET_KEY = "django-insecure-z%ef86^fv))1f1p%=mw3q((_m-fj=3#3j*l*6w(y(u^8df3%$d
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "127.0.0.1",
     "localhost:5173",
     # aurora backend
     "api.aurora-api.uz",
@@ -53,6 +54,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://api.aurora-api.uz",
     "https://stage.aurora-app.uz",
     "https://aurora-app.uz",
+    "http://127.0.0.1:8000",
 ]
 
 CSRF_COOKIE_SECURE = True
@@ -66,6 +68,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://api.aurora-api.uz",
     "https://stage.aurora-app.uz",
     "https://aurora-app.uz",
+    "http://127.0.0.1:8000",
 ]
 
 CORS_ALLOW_CREDENTIALS = True

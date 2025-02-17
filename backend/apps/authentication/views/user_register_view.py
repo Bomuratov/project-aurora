@@ -3,10 +3,11 @@ import random
 from rest_framework import viewsets, decorators, response, status
 from django.conf import settings
 from django.utils import timezone
+from drf_spectacular.utils import extend_schema
 from authentication.models import UserModel
 from apps.authentication.serializers.user_register_serializer import UserSerializer
 
-
+@extend_schema(tags=['User register'])
 class UserView(viewsets.ModelViewSet):
     queryset = UserModel.objects.all()
     serializer_class = UserSerializer
