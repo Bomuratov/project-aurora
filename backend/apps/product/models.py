@@ -7,7 +7,7 @@ Basemodel = get_basemodel()
 
 class Category(Basemodel):
     restaurant = models.ForeignKey(
-        "restaurant.Restaurant", on_delete=models.CASCADE, null=True, blank=True, related_name="restaurant_category"
+        "restaurant.Restaurant", on_delete=models.CASCADE, null=True, blank=True, related_name="category_apps"
     )
     name = models.CharField(max_length=225)
     order = models.IntegerField(default=0)
@@ -36,7 +36,7 @@ class Menu(Basemodel):
         related_name="category",
     )
     restaurant = models.ForeignKey(
-        "restaurant.Restaurant", on_delete=models.CASCADE, null=True, blank=True, related_name="restaurant_menu"
+        "restaurant.Restaurant", on_delete=models.CASCADE, null=True, blank=True, related_name="menu_apps"
     )
 
     class Meta:

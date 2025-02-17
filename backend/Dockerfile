@@ -1,13 +1,18 @@
-# Используем официальный образ PostgreSQL
-FROM postgres:15
+# Используем официальный образ Python
+FROM python:3.11
 
-# Устанавливаем переменные окружения по умолчанию
-ENV POSTGRES_USER=aurora
-ENV POSTGRES_PASSWORD=admin
-ENV POSTGRES_DB=aurora 
+# Устанавливаем рабочую директорию
+WORKDIR /app
 
-# (Опционально) Копируем скрипт для начальной инициализации базы данных
-# ADD ./init.sql /docker-entrypoint-initdb.d/
+# Копируем зависимости и устанавливаем их
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Открываем порт 5432
-EXPOSE 5432
+# Копируем проект Django
+COPY backend /app
+
+# Открываем порт для Django
+EXPOSE 8000
+
+# Запускаем сервер через Gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi:application"]
