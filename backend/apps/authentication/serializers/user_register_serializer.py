@@ -22,15 +22,15 @@ class UserSerializer(serializers.ModelSerializer):
             "min_length": f"Парол должен быть больше {settings.PASSWORD_MIN_LENGHT} символов"
         }
     )
-    bot_link = serializers.SerializerMethodField()
+    # bot_link = serializers.SerializerMethodField()
     class Meta:
         model=UserModel
-        fields = ["id", "username", "email", "phone", "password_1", "password_2", "user_registered_at", "bot_link"]
+        fields = ["id", "username", "email", "phone", "password_1", "password_2", "user_registered_at"]
         read_only_fields = ("id", "user_registered_at", "code")
 
-    def get_bot_link(self, obj):
-        # Здесь можно хранить код в поле модели или получать из внешнего источника
-        return getattr(obj, "bot_link", None)
+    # def get_bot_link(self, obj):
+    #     # Здесь можно хранить код в поле модели или получать из внешнего источника
+    #     return getattr(obj, "bot_link", None)
 
     def validate(self, attrs):
         if not attrs["password_1"]:
@@ -57,7 +57,7 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data["password_1"])
         user.is_active = False
         user.is_staff = False
-        response_code = send_code(phone=validated_data["phone"], code=str(code))
+        # response_code = send_code(phone=validated_data["phone"], code=str(code))
         user.save()
-        user.bot_link = response_code.get("detail", None)
+        # user.bot_link = response_code.get("detail", None)
         return user
