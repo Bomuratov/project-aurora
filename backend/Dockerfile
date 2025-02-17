@@ -1,18 +1,26 @@
 # Используем официальный образ Python
-FROM python:3.11
+FROM python:3.9-slim
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем зависимости и устанавливаем их
-COPY backend/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-# Копируем проект Django
-COPY backend /app
+RUN pip install --upgrade pip
 
-# Открываем порт для Django
+# Копируем зависимости
+COPY requirements.txt .
+
+# Устанавливаем зависимости
+RUN pip install -r requirements.txt
+
+# Копируем зависимости
+COPY . .
+
+# Открываем порт 8000
 EXPOSE 8000
 
-# Запускаем сервер через Gunicorn
+# Запуск сервера Django
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi:application"]
+
