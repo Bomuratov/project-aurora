@@ -32,7 +32,7 @@ SECRET_KEY = "django-insecure-z%ef86^fv))1f1p%=mw3q((_m-fj=3#3j*l*6w(y(u^8df3%$d
 DEBUG = True
 
 ALLOWED_HOSTS = [
-
+    "localhost:5173",
     # aurora backend
     "api.aurora-api.uz",
     "54.81.27.223",
@@ -49,6 +49,7 @@ ALLOWED_HOSTS = [
 # csrf settings
 
 CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
     "https://api.aurora-api.uz",
     "https://stage.aurora-app.uz",
     "https://aurora-app.uz",
@@ -61,6 +62,7 @@ SESSION_COOKIE_SECURE = True
 # cors settings
 
 CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
     "https://api.aurora-api.uz",
     "https://stage.aurora-app.uz",
     "https://aurora-app.uz",
