@@ -25,7 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
     bot_link = serializers.SerializerMethodField()
     class Meta:
         model=UserModel
-        fields = ["id", "username", "email", "phone", "password_1", "password_2", "user_registered_at"]
+        fields = ["id", "username", "email", "phone", "password_1", "password_2", "user_registered_at", "bot_link"]
         read_only_fields = ("id", "user_registered_at", "code")
 
     def get_bot_link(self, obj):
