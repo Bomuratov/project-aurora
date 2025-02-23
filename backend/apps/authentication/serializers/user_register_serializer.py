@@ -1,14 +1,13 @@
 import random
 from datetime import timedelta
-from django.db import IntegrityError
 from django.utils import timezone
 from django.conf import settings
-from rest_framework import serializers, response, status
+from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from django.core.exceptions import ValidationError as DjangoValidationError
 from authentication.models import UserModel
 from authentication.utils.send_code import send_code
-from django.contrib.auth import get_user_model
+from apps.authentication.exceptions.validate_exception import ValidateErrorException
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -38,16 +37,10 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         if UserModel.objects.filter(username=attrs["username"]).exists() or UserModel.objects.filter(phone=attrs["phone"]).exists():
-            raise serializers.ValidationError({"message":"Пользователь с такими данными уже сушествует", "code":"3"})
-        
-        if not attrs["password_1"]:
-            raise ValueError("Похоже вы не указали пароль")
-            
-        if not attrs["password_2"]:
-            raise ValueError("Похоже вы не указали пароль")
-        
+            raise ValidateErrorException(detail="Пользователь с такими данными уже существують", code=3)
+
         if attrs["password_1"]!= attrs["password_2"]:
-            raise serializers.ValidationError("Пароли не совпадають")
+            raise ValidateErrorException(detail="Пароли не совпадают", code=2)
         return attrs
     
     def create(self, validated_data):
@@ -68,3 +61,12 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         user.bot_link = response_code.get("detail", None)
         return user
+    
+    {
+        "message":[
+            "Пользователь с такими данными уже сушествует"
+            ],
+        "code":[
+            "3"
+            ]
+    }
