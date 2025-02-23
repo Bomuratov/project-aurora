@@ -38,7 +38,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         if UserModel.objects.filter(username=attrs["username"]).exists() or UserModel.objects.filter(phone=attrs["phone"]).exists():
-            raise serializers.ValidationError({"message":"Пользователь с такими данными уже сушествует", "code": 3})
+            raise serializers.ValidationError({"message":"Пользователь с такими данными уже сушествует", "code": "3"})
         
         if not attrs["password_1"]:
             raise ValueError("Похоже вы не указали пароль")
