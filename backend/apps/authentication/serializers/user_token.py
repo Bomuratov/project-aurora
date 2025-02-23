@@ -18,7 +18,7 @@ class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         user = PhoneAuthBackend.authenticate(
             request=self.context['request'],
-            phone=attrs.get('username'),
+            phone=attrs.get('email'),
             password=attrs.get('password')
         )
         

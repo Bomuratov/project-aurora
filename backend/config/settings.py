@@ -33,6 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
+    "localhost",
     "localhost:5173",
     # aurora backend
     "api.aurora-api.uz",
@@ -58,6 +59,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://stage.aurora-app.uz",
     "https://aurora-app.uz",
     "http://127.0.0.1:8000",
+    "http://localhos"
 
 ]
 

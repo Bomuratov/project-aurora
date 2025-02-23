@@ -29,16 +29,15 @@ class VendorManager(BaseUserManager):
 
 
 class UserModel(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(max_length=255, validators=[utils.USERNAME_VALIDATOR], unique=True)
+    username = models.CharField(max_length=255, validators=[utils.USERNAME_VALIDATOR])
     phone = models.CharField(
-        unique=True,
         max_length=14,
         validators=[utils.UZB_PHONE_VALIDATOR],
         null=True,
         blank=True,
     )
-    email = models.EmailField(blank=True, null=True)
-    code = models.CharField(max_length=6, null=True)
+    email = models.EmailField(blank=True, null=True, unique=True)
+    code = models.CharField(max_length=6, null=True, unique=True)
     code_expiry = models.DateTimeField(blank=True, null=True)
     max_code_try = models.CharField(max_length=2, default=settings.MAX_CODE_TRY, null=True)
     code_max_out = models.DateTimeField(blank=True, null=True)
@@ -51,7 +50,7 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     user_registered_at = models.DateTimeField(auto_now_add=True, editable=False)
     chat_id = models.BigIntegerField(null=True, blank=True)
 
-    USERNAME_FIELD = "username"
+    USERNAME_FIELD = "email"
     objects = VendorManager()
 
     def __str__(self):

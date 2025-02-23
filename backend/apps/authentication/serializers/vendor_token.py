@@ -17,7 +17,7 @@ class VendorTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         user = UsernameAuthBackend.authenticate(
             request=self.context['request'],
-            username=attrs.get('username'),
+            username=attrs.get('email'),
             password=attrs.get('password')
         )
         print(user)
