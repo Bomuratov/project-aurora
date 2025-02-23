@@ -75,7 +75,7 @@ SESSION_COOKIE_SECURE = True
 #     "http://127.0.0.1:8000",
 #     "http://*aurora*",
 # ]
-CORS_ALLOWED_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
 
