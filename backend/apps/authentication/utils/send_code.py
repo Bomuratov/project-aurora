@@ -4,7 +4,7 @@ headers = {
         'Content-Type': 'application/json',
     }
 def send_code(phone, code):
-    url = "https://brainy-hummingbird-gbteam-4548a45b.koyeb.app/send_code/"
+    url = "https://api.aurora-api.uz/fastapi/send_code/"
     data={
         "user_id": phone,
         "data": code
