@@ -44,6 +44,9 @@ ALLOWED_HOSTS = [
     # aurora-front
     "aurora-app.uz/",
 
+    # vercel hosts
+    "*.vercel.app",
+
 ]
 
 
@@ -55,6 +58,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://stage.aurora-app.uz",
     "https://aurora-app.uz",
     "http://127.0.0.1:8000",
+
 ]
 
 CSRF_COOKIE_SECURE = True
@@ -63,13 +67,15 @@ SESSION_COOKIE_SECURE = True
 
 # cors settings
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "https://api.aurora-api.uz",
-    "https://stage.aurora-app.uz",
-    "https://aurora-app.uz",
-    "http://127.0.0.1:8000",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",
+#     "https://api.aurora-api.uz",
+#     "https://stage.aurora-app.uz",
+#     "https://aurora-app.uz",
+#     "http://127.0.0.1:8000",
+#     "http://*aurora*",
+# ]
+CORS_ALLOWED_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
 

@@ -40,7 +40,7 @@ class UserSerializer(serializers.ModelSerializer):
             raise ValueError("Похоже вы не указали пароль")
         
         if attrs["password_1"]!= attrs["password_2"]:
-            raise serializers.ValidationError("Паролт не совпадають")
+            raise serializers.ValidationError("Пароли не совпадають")
         return attrs
     
     def create(self, validated_data):
