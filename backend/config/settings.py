@@ -250,10 +250,10 @@ PASSWORD_MIN_LENGHT = 8
 AUTH_USER_MODEL = "authentication.UserModel"
 
 REST_FRAMEWORK = {
-    
+
     # authentication backends
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ),
