@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from authentication.backend.authenticator import UsernameAuthBackend
-from apps.restaurant.models import Restaurant
+from restaurant.serializers.restaurant_serializer import RestaurantSerializer, Restaurant
 
 class VendorTokenObtainPairSerializer(TokenObtainPairSerializer):
 
@@ -13,7 +13,7 @@ class VendorTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['is_user'] = user.is_user
         token['is_vendor'] = user.is_vendor
         token['username'] = user.username
-        token['vendor'] = Restaurant.objects.filter(admin=user.id).first()
+        token['vendor'] =', '.join(Restaurant.objects.filter(admin=user.id).values_list('name', flat=True))
 
         return token
     
