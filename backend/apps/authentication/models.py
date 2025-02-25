@@ -54,7 +54,7 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     objects = VendorManager()
 
     def __str__(self):
-        return self.username
+        return self.email
 
 
 class Roles(models.Model):
