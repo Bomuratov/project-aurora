@@ -250,12 +250,21 @@ PASSWORD_MIN_LENGHT = 8
 AUTH_USER_MODEL = "authentication.UserModel"
 
 REST_FRAMEWORK = {
+    
+    # authentication backends
     "DEFAULT_AUTHENTICATION_CLASSES": (
         # 'rest_framework_simplejwt.authentication.JWTAuthentication',
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ),
+
+    # yasg SWAGGER Schema
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    
+    # filtering
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
 }
 
 
