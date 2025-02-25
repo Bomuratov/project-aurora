@@ -1,5 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 from django.core.validators import validate_email
 from django.conf import settings
 from core import utils
@@ -15,7 +19,7 @@ class VendorManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
-    
+
     def create_superuser(self, email, password):
         user = self.create_user(email=email, password=password)
         user.is_active = True
@@ -25,7 +29,6 @@ class VendorManager(BaseUserManager):
         user.is_superuser = True
         user.save(using=self._db)
         return user
-
 
 
 class UserModel(AbstractBaseUser, PermissionsMixin):
@@ -39,7 +42,9 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(blank=True, null=True, unique=True)
     code = models.CharField(max_length=6, null=True, unique=True)
     code_expiry = models.DateTimeField(blank=True, null=True)
-    max_code_try = models.CharField(max_length=2, default=settings.MAX_CODE_TRY, null=True)
+    max_code_try = models.CharField(
+        max_length=2, default=settings.MAX_CODE_TRY, null=True
+    )
     code_max_out = models.DateTimeField(blank=True, null=True)
     is_active = models.BooleanField(default=False)
     is_user = models.BooleanField(default=False)
@@ -67,7 +72,6 @@ class Roles(models.Model):
             permissions = []
             for per in self.permission:
                 ...
-
 
 
 # class UserLocation(models.Model):
