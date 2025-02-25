@@ -7,5 +7,5 @@ from apps.restaurant.serializers.restaurant_serializer import RestaurantSerializ
 class RestaurantView(ModelViewSet):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
-    lookup_field = "pk"
+    lookup_field = "name"
     
