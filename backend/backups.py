@@ -26,7 +26,7 @@ OLD_DB = {
     "NAME": "aurora",
     "USER": "aurora",
     "PASSWORD": "admin",
-    "HOST": "localhost",
+    "HOST": "0.0.0.0",
     "PORT": "5432",
 }
 
