@@ -3,8 +3,6 @@ from datetime import timedelta
 from django.utils import timezone
 from django.conf import settings
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
-from django.core.exceptions import ValidationError as DjangoValidationError
 from authentication.models import UserModel
 from authentication.utils.send_code import send_code
 from apps.authentication.exceptions.validate_exception import ValidateErrorException

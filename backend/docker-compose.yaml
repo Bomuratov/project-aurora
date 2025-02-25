@@ -12,8 +12,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      # Если есть файл инициализации, можно добавить:
-      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql\
+      - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql
 
   redis:
       image: redis:7.0
