@@ -9,4 +9,4 @@ class MenuView(viewsets.ModelViewSet):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
     filter_backends = [filters.DjangoFilterBackend]
-    filterset_fields = ['category']
+    filterset_fields = ['restaurant__name']
