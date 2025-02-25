@@ -1,7 +1,7 @@
 def upload_path_menu(instance, filename):
     file = filename.rfind(".")
     formatt = filename[file:]
-    name = instance.name + formatt
+    name = str(instance.id) + formatt
     return "{0}/category/{1}/{2}".format(
         instance.restaurant.name, instance.category.name, name
     )
