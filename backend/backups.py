@@ -22,6 +22,16 @@
 # # Путь к папке MEDIA_ROOT (укажи правильный путь)
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+"/restaurant_photos"
 
+<<<<<<< HEAD
+# Подключаем старую базу данных
+OLD_DB = {
+    "NAME": "aurora",
+    "USER": "aurora",
+    "PASSWORD": "admin",
+    "HOST": "0.0.0.0",
+    "PORT": "5432",
+}
+=======
 # # Подключаем старую базу данных
 # OLD_DB = {
 #     "NAME": "aurora",
@@ -30,6 +40,7 @@
 #     "HOST": "localhost",
 #     "PORT": "5432",
 # }
+>>>>>>> origin
 
 # conn = psycopg2.connect(
 #     dbname=OLD_DB["NAME"],
