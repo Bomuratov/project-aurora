@@ -48,40 +48,9 @@
 
 
 
-# """
+"""
 
-# {
-#     "order": {
-#         "id" : 1,
-#         "created_at" : "date-time",
-#         "updated_at" : "date-time",
-#         "products" : [ {
-#             "id": 1,
-#             "price": 12000,
-#             "quantity": 2,
-#             "total_price": 24000
-#         },
-#         {
-#             "id": 2,
-#             "price": 10000,
-#             "quantity": 2,
-#             "total_price":20000
-#         },
-#         {
-#             "id": 3,
-#             "price": 5000,
-#             "quantity": 2,
-#             "total_price": 10000
-#         }
-#     ],
-#         "total_price": 54000,
-#         "lat": "647328413948",
-#         "long": "23678492965728",
-#         "user_id": 1,
-#         "restaurant":3
 
-#     }
-# }
 
 import django
 import os
@@ -199,3 +168,40 @@ if __name__ == "__main__":
     migrate_categories()
     migrate_menus()
     print("🎉 Data migration completed successfully!")
+
+
+
+# {
+#     "order": {
+#         "id" : 1,
+#         "created_at" : "date-time",
+#         "updated_at" : "date-time",
+#         "products" : [ {
+#             "id": 1,
+#             "price": 12000,
+#             "quantity": 2,
+#             "total_price": 24000
+#         },
+#         {
+#             "id": 2,
+#             "price": 10000,
+#             "quantity": 2,
+#             "total_price":20000
+#         },
+#         {
+#             "id": 3,
+#             "price": 5000,
+#             "quantity": 2,
+#             "total_price": 10000
+#         }
+#     ],
+#         "total_price": 54000,
+#         "lat": "647328413948",
+#         "long": "23678492965728",
+#         "user_id": 1,
+#         "restaurant":3
+
+#     }
+# }
+
+"""
