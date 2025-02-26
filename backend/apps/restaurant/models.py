@@ -23,7 +23,6 @@ class Restaurant(BaseModel):
     contact_support = models.CharField(max_length=255, null=True, blank=True, validators=[utils.UZB_PHONE_VALIDATOR])
 
 
-
     def __str__(self):
         return self.name
     
