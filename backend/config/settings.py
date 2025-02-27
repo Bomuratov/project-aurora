@@ -241,7 +241,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# Authentication CONSTANTAS
+# Authentication CONSTANTS
 
 MAX_CODE_TRY = 6
 
@@ -275,5 +275,5 @@ SIMPLE_JWT = {
     "BLACKLIST_AFTER_ROTATION": True,
     "ALGORITHM": "HS256",
     "SIGNING_KEY": SECRET_KEY,
-    
+
 }
