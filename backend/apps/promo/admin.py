@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Promo
+from apps.promo.models import Promo
 
 admin.site.register(Promo)

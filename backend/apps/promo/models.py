@@ -3,7 +3,7 @@ from utils.currency import CURRENCY, UZS
 from core import get_basemodel 
 
 
-Basemodel = get_basemodel
+Basemodel = get_basemodel()
 
 
 class Promo(Basemodel):
