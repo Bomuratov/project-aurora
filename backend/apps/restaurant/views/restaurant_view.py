@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from drf_spectacular.utils import extend_schema 
 from restaurant.models import Restaurant
-from apps.restaurant.serializers.restaurant_serializer import RestaurantSerializer
+from restaurant.serializers.restaurant_serializer import RestaurantSerializer
 
 
 @extend_schema(tags=['Restaurant'])

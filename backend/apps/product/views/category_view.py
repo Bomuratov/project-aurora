@@ -1,8 +1,8 @@
 from rest_framework import viewsets, decorators, response, status
 from django_filters import rest_framework as filters
 from drf_spectacular.utils import extend_schema 
-from apps.product.models import Category
-from apps.product.serializers.category_serializer import CategorySerializer
+from product.models import Category
+from product.serializers.category_serializer import CategorySerializer
 
 
 @extend_schema(tags=['Category'])

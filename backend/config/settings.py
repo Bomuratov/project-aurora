@@ -115,12 +115,12 @@ INSTALLED_APPS = [
     "corsheaders",
     "drf_spectacular",
     # internal apps
-    "apps",
     "authentication.apps.AuthenticationConfig",
     "core",
     "product",
     "restaurant",
     "orders",
+    "promo"
 ]
 
 

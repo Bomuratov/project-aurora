@@ -1,8 +1,8 @@
 from rest_framework import viewsets
-from apps.product.models import Menu
 from drf_spectacular.utils import extend_schema 
 from django_filters import rest_framework as filters
-from apps.product.serializers.menu_serializer import MenuSerializer
+from product.models import Menu
+from product.serializers.menu_serializer import MenuSerializer
 
 @extend_schema(tags=['Menu'])
 class MenuView(viewsets.ModelViewSet):

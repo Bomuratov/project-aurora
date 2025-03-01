@@ -7,7 +7,7 @@ from django.contrib.auth.models import (
 from django.core.validators import validate_email
 from django.conf import settings
 from core import utils
-from apps.authentication.utils.constantas import RESOURCE, PERMISSIONS, VIEW, MENU
+from authentication.utils.constantas import RESOURCE, PERMISSIONS, VIEW, MENU
 
 
 class VendorManager(BaseUserManager):

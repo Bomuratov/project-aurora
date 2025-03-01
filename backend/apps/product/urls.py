@@ -1,6 +1,6 @@
 from rest_framework import routers
-from apps.product.views.menu_view import MenuView
-from apps.product.views.category_view import CategoryView
+from product.views.menu_view import MenuView
+from product.views.category_view import CategoryView
 
 
 router = routers.DefaultRouter()

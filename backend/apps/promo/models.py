@@ -1,5 +1,5 @@
 from django.db import models
-from utils.currency import CURRENCY, UZS
+from promo.utils.currency import CURRENCY, UZS
 from core import get_basemodel 
 
 
@@ -15,3 +15,7 @@ class Promo(Basemodel):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        db_table = 'promo'
+        ordering = ["id"]

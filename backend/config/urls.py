@@ -9,7 +9,7 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, Sp
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/v1/", include([
-        path("", include("orders.urls")),
+        path("", include("promo.urls")),
         path("", include("product.urls")),
         path("", include("restaurant.urls")),
         path("auth/", include("authentication.urls")),

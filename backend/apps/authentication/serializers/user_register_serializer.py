@@ -5,7 +5,7 @@ from django.conf import settings
 from rest_framework import serializers
 from authentication.models import UserModel
 from authentication.utils.send_code import send_code
-from apps.authentication.exceptions.validate_exception import ValidateErrorException
+from authentication.exceptions.validate_exception import ValidateErrorException
 
 
 class UserSerializer(serializers.ModelSerializer):

@@ -1,6 +1,6 @@
 from django.db import models
 from core import utils, get_basemodel
-from apps.product.utils.currency import CURRENCY, UZS
+from product.utils.currency import CURRENCY, UZS
 
 Basemodel = get_basemodel()
 
