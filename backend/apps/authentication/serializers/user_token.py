@@ -1,5 +1,6 @@
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
+from apps.authentication.exceptions.validate_exception import ValidateErrorException
 from apps.authentication.backend.authenticator import PhoneAuthBackend
 
 
@@ -23,7 +24,7 @@ class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
         )
         
         if not user or user.is_vendor:
-            raise serializers.ValidationError("Неправильный логин и пароль или пользователь не найден")
+            raise ValidateErrorException(detail="Неправильный логин и пароль или пользователь не найден", code=401)
         
         refresh = self.get_token(user)
         return {'access': str(refresh.access_token), 'refresh': str(refresh)}
