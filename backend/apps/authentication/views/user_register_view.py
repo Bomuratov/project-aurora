@@ -32,8 +32,6 @@ class UserView(viewsets.ModelViewSet):
             return response.Response({"message": "Введите проверочный код", "code": 3}, status=status.HTTP_404_NOT_FOUND)
         
         code = request.data.get("code")
-        print(f"request - {now} type - {type(now)}")
-        print(f"database - {instance.code_expiry} type - {type(instance.code_expiry)}")
 
         if int(code) != int(instance.code):
             return response.Response({"message": "Вы неправильно ввели проверочный код", "code": 4}, status=status.HTTP_404_NOT_FOUND)
